@@ -1,0 +1,18 @@
+# ninja log v5
+0	255	1689006930402762138	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+255	293	1689006930439762587	Lab_Marini	365969648ec2256d
+1	259	1689009250779107544	CMakeFiles/Lab_Marini.dir/TodoItem.cpp.o	91b868e7ea4b57ff
+0	298	1689009250818108019	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+0	275	1689009329744069343	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+0	264	1689009342255221725	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+0	220	1689009382542712400	CMakeFiles/Lab_Marini.dir/TodoItem.cpp.o	91b868e7ea4b57ff
+0	265	1689009382587712949	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+0	226	1689009411716067697	CMakeFiles/Lab_Marini.dir/TodoItem.cpp.o	91b868e7ea4b57ff
+0	271	1689009411761068245	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+1	261	1689009441709432982	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+0	231	1689009532705662093	CMakeFiles/Lab_Marini.dir/TodoItem.cpp.o	91b868e7ea4b57ff
+0	261	1689009532734662483	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+1	259	1689009972958424058	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+259	293	1689009972992424494	Lab_Marini	5a5326239cfa37f8
+1	261	1689010033222194515	CMakeFiles/Lab_Marini.dir/main.cpp.o	73895363e25edf6a
+261	296	1689010033256194949	Lab_Marini	5a5326239cfa37f8
