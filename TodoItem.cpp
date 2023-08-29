@@ -3,11 +3,14 @@
 //
 
 #include "TodoItem.h"
+#include "ctime"
 
+//TODO add date and time
+//TODO save on memory
+TodoItem::TodoItem() : id(0),  completed(false) {}
+//TodoItem::~TodoItem() = default;
 
-TodoItem::TodoItem() : id(0), description(""), completed(false) {}
-
-int TodoItem::getId() {
+int TodoItem::getId() const {
     return id;
 }
 
@@ -16,8 +19,10 @@ std::string TodoItem::getDescription() {
 }
 
 bool TodoItem::isCompleted() {
-    return false;
+    return completed;
 }
+
+void TodoItem::setCompleted(bool val) {completed = val;}
 
 bool TodoItem::create(std::string new_description) {
     //generiamo un random int tra 1 e 100

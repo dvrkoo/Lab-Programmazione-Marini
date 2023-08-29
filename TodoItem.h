@@ -19,7 +19,7 @@ public:
 
     ~TodoItem();
 
-    int getId();
+    int getId() const;
 
     std::string getDescription();
 
@@ -27,6 +27,7 @@ public:
 
     bool create(std::string new_description);
 
+    void setCompleted(bool val);
 };
 
 
