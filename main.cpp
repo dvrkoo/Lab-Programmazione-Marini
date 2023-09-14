@@ -8,7 +8,7 @@ int main() {
     //TODO Code refactoring
     char input_option;
     int input_id;
-    std::string version = "v0.2.0";
+    std::string version = "v0.3.0";
     std::list<TodoItem> todoItems;
     std::list<TodoItem>::iterator it;
     std::string input_description;
@@ -19,17 +19,15 @@ int main() {
     //TodoItem test;
     //test.create("this is a test");
     //todoItems.push_back(test);
-
     while (true) {
-        system("cls");
+        //system("cls"); NOTE: Clion doesn't really allow you to clear console :(
         std::cout << "Todo List Maker -- " << version << std::endl;
         std::cout << std::endl << std::endl;
 
         for (it = todoItems.begin(); it != todoItems.end(); it++) {
 
             std::string completed = it->isCompleted() ? "done" : "not done";
-
-            std::cout << it->getId() << " | " << it->getDescription() << " | " << completed << std::endl;
+            std::cout << it->getId() << " | " << it->getDescription() << " | " << completed << " | Due to: "<< it->getDueDate() << std::endl;
         }
 
         if (todoItems.empty() ){
@@ -56,7 +54,13 @@ int main() {
             std::cin.ignore();
             std::getline(std::cin, input_description);
 
-            TodoItem newItem;
+            std::cout << "Enter a custom Date and time (YYYY MM DD HH MM): ";
+            int year, month, day, hour, minute, second;
+            std::cin >> year >> month >> day >> hour >> minute ;
+            std::cin.clear();
+            std::cin.ignore();
+            Date date(year,month,day,hour,minute) ;
+            TodoItem newItem(date);
             newItem.create(input_description);
             todoItems.push_back(newItem);
         }
@@ -72,6 +76,10 @@ int main() {
                     break;
                 }
             }
+            std::cout << "Invalid Id" << std::endl;
+
+        }
+        else if (input_option == 's'){
 
         }
     }
@@ -79,3 +87,4 @@ int main() {
 
 
 }
+

@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/nick/CLionProjects/Lab-Marini/cmake_build_Debug",
+  "command": "/usr/bin/c++   -g -std=gnu++17 -o CMakeFiles/Lab_Marini.dir/main.cpp.o -c /home/nick/CLionProjects/Lab-Marini/main.cpp",
+  "file": "/home/nick/CLionProjects/Lab-Marini/main.cpp",
+  "output": "CMakeFiles/Lab_Marini.dir/main.cpp.o"
+},
+{
+  "directory": "/home/nick/CLionProjects/Lab-Marini/cmake_build_Debug",
+  "command": "/usr/bin/c++   -g -std=gnu++17 -o CMakeFiles/Lab_Marini.dir/TodoItem.cpp.o -c /home/nick/CLionProjects/Lab-Marini/TodoItem.cpp",
+  "file": "/home/nick/CLionProjects/Lab-Marini/TodoItem.cpp",
+  "output": "CMakeFiles/Lab_Marini.dir/TodoItem.cpp.o"
+},
+{
+  "directory": "/home/nick/CLionProjects/Lab-Marini/cmake_build_Debug",
+  "command": "/usr/bin/c++   -g -std=gnu++17 -o CMakeFiles/Lab_Marini.dir/DateTime.cpp.o -c /home/nick/CLionProjects/Lab-Marini/DateTime.cpp",
+  "file": "/home/nick/CLionProjects/Lab-Marini/DateTime.cpp",
+  "output": "CMakeFiles/Lab_Marini.dir/DateTime.cpp.o"
+},
+{
+  "directory": "/home/nick/CLionProjects/Lab-Marini/cmake_build_Debug",
+  "command": "/usr/bin/c++   -g -std=gnu++17 -o CMakeFiles/Lab_Marini.dir/FileHelper.cpp.o -c /home/nick/CLionProjects/Lab-Marini/FileHelper.cpp",
+  "file": "/home/nick/CLionProjects/Lab-Marini/FileHelper.cpp",
+  "output": "CMakeFiles/Lab_Marini.dir/FileHelper.cpp.o"
+}
+]

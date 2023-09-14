@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/Lab_Marini.dir/main.cpp.o CMakeFiles/Lab_Marini.dir/TodoItem.cpp.o CMakeFiles/Lab_Marini.dir/DateTime.cpp.o CMakeFiles/Lab_Marini.dir/FileHelper.cpp.o -o Lab_Marini 
