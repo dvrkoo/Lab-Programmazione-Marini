@@ -1,3 +1,0 @@
-/home/nick/CLionProjects/Lab-Marini/cmake_build_Debug/CMakeFiles/Lab_Marini.dir
-/home/nick/CLionProjects/Lab-Marini/cmake_build_Debug/CMakeFiles/edit_cache.dir
-/home/nick/CLionProjects/Lab-Marini/cmake_build_Debug/CMakeFiles/rebuild_cache.dir
