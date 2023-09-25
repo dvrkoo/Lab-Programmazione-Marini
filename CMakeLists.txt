@@ -4,8 +4,6 @@ project(Lab_Marini)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Lab_Marini main.cpp TodoItem.cpp TodoItem.h
-        DateTime.cpp
-        DateTime.h
         Date.cpp
         Date.h
         HelperFunctions.cpp
