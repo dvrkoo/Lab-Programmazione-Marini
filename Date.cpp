@@ -8,14 +8,15 @@
 
 void Date::setYear(int year_) {
     if(year_ > 0)Date::year = year_;
-    else throw std::invalid_argument("Date is incorrect");
+    else throw std::invalid_argument("Invalid Year");
+
 }
 
 void Date::setMonth(int month_) {
     if (month_ <= 12 && month_ > 0) {
         Date::month = month_;
     }
-    else {  throw std::invalid_argument("Date is incorrect"); }
+    else { throw std::invalid_argument("Invalid Month"); }
 }
 
 void Date::setDay(int day_) {
@@ -30,36 +31,37 @@ void Date::setDay(int day_) {
         }
     }
     else if(isInArray && (day_ <= 31 && day_ > 0)) {
-        Date::day = day;
+        Date::day = day_;
     }
     else if (day_ < 31 and day_ > 0){
         Date::day = day_;
     }
     else {
-        throw std::invalid_argument("Date is incorrect");
+        throw std::invalid_argument("Invalid day");
     }
 
 
 }
 
 void Date::setHours(int hours) {
-    if(hours < 24 && hours >= 0){
-        Date::hours = hours;
+    if (hours >= 0 && hours <= 24){
+    Date::hours= hours;
     }
-    else throw std::invalid_argument("Date is incorrect");
+    else {throw std::invalid_argument("Invalid hours");}
 }
 
 void Date::setMinutes(int minutes) {
-    if(minutes < 60 && minutes >=0){
-        Date::minutes = minutes;
+    if (minutes >= 0 && minutes <=60){
+    Date::minutes = minutes;
     }
-    else throw std::invalid_argument("Date is incorrect");
+    else {throw std::invalid_argument("Invalid minutes");}
 }
 
 Date::Date(int year, int month, int day, int hours, int minutes) {
     Date::setYear(year);
     Date::setMonth(month);
     Date::setDay(day);
+    Date::setHours(hours);
     Date::setMinutes(minutes);
 }
 

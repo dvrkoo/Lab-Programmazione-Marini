@@ -2,7 +2,8 @@
 #include <string>
 #include <list>
 #include "TodoItem.h"
-
+#include "HelperFunctions.h"
+#include <fstream>
 
 int main() {
     //TODO Code refactoring
@@ -12,13 +13,11 @@ int main() {
     std::list<TodoItem> todoItems;
     std::list<TodoItem>::iterator it;
     std::string input_description;
+    std::ofstream file;
+    //open file in write mode
 
-    srand(time(NULL));
     todoItems.clear();
 
-    //TodoItem test;
-    //test.create("this is a test");
-    //todoItems.push_back(test);
     while (true) {
         //system("cls"); NOTE: Clion doesn't really allow you to clear console :(
         std::cout << "Todo List Maker -- " << version << std::endl;
@@ -38,6 +37,8 @@ int main() {
 
         std::cout << "[a]dd a new Todo " << std::endl;
         std::cout << "[c]omplete a Todo " << std::endl;
+        std::cout << "[s]ave to file" << std::endl;
+        std::cout << "[r]ead from file" << std::endl;
         std::cout << "[q]uit" << std::endl;
 
         std::cout << "choice: " ;
@@ -55,7 +56,7 @@ int main() {
             std::getline(std::cin, input_description);
 
             std::cout << "Enter a custom Date and time (YYYY MM DD HH MM): ";
-            int year, month, day, hour, minute, second;
+            int year, month, day, hour, minute;
             std::cin >> year >> month >> day >> hour >> minute ;
             std::cin.clear();
             std::cin.ignore();
@@ -65,7 +66,7 @@ int main() {
             todoItems.push_back(newItem);
         }
         else if (input_option == 'c') {
-            //TODO handle better invalid id
+            //TODO handle in a better way invalid id
             std::cout << "Enter id to mark completed: ";
             std::cin >> input_id;
 
@@ -80,9 +81,13 @@ int main() {
 
         }
         else if (input_option == 's'){
-
+            HelperFunctions::writeFile(todoItems);
+            std::cout << "Saving to file ";
         }
-    }
+        else if (input_option == 'r'){
+            HelperFunctions::readFile(todoItems);
+            std::cout << "Reading from file ";
+        }    }
     return 0;
 
 

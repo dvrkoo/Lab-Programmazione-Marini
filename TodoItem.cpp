@@ -24,7 +24,7 @@ bool TodoItem::isCompleted() {
 }
 
 std::string TodoItem::getDueDate() {
-    std::string date = std::to_string(DueDate.getYear()) + "/" + std::to_string(DueDate.getMonth())+ "/" + std::to_string(DueDate.getDay()) + "/" + std::to_string(DueDate.getHours())+ "/" + std::to_string(DueDate.getMinutes());
+    std::string date = std::to_string(DueDate.getYear()) + "/" + std::to_string(DueDate.getMonth())+ "/" + std::to_string(DueDate.getDay()) + "/" + std::to_string(DueDate.getHours())+ ":" + std::to_string(DueDate.getMinutes());
     return date;
 }
 void TodoItem::setCompleted(bool val) {completed = val;}
