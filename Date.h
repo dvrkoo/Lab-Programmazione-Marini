@@ -24,19 +24,19 @@ public:
 
     int getMinutes() const;
 
-public:
     Date(int year, int month, int day, int hours, int minutes);
 
-public:
-    void setYear(int year);
+    void setYear(int year, bool check);
 
-    void setMonth(int month);
+    void setMonth(int month, bool check);
 
     void setDay(int day);
 
     void setHours(int hours);
 
     void setMinutes(int minutes);
+
+    void checkDate(int day);
 
 
 public:

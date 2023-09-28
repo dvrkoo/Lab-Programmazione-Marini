@@ -41,9 +41,7 @@ public:
 
     void readFromFile(const std::string &filename);
 
-    std::string serialize() const;
-
-    bool deserialize(const std::string &data);
+    void editDate(int index, int value);
 };
 
 

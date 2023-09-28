@@ -8,4 +8,6 @@ add_executable(Lab_Marini main.cpp TodoItem.cpp TodoItem.h
         Date.h
         HelperFunctions.cpp
         HelperFunctions.h
+        TodoList.cpp
+        TodoList.h
 )
