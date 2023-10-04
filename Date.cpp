@@ -33,28 +33,27 @@ void Date::checkDate(int day_) {
         } else { throw std::invalid_argument("Invalid Day"); }
     } else if (isInArray && (day_ <= 31 && day_ > 0)) {
         Date::day = day_;
-    } else if (day_ < 31 and day_ > 0) {
+    } else if (day_ < 31 && day_ > 0) {
         Date::day = day_;
     } else {
         throw std::invalid_argument("Invalid day");
     }
-
 }
 
 void Date::setDay(int day_) {
     Date::checkDate(day_);
 }
 
-void Date::setHours(int hours) {
-    if (hours >= 0 && hours <= 24) {
-        Date::hours = hours;
-    } else { throw std::invalid_argument("Invalid hours"); }
+void Date::setHours(int hours_) {
+    if (hours_ >= 0 && hours_ <= 24) {
+        Date::hours = hours_;
+    } else { throw std::invalid_argument("Invalid hours_"); }
 }
 
-void Date::setMinutes(int minutes) {
-    if (minutes >= 0 && minutes <= 60) {
-        Date::minutes = minutes;
-    } else { throw std::invalid_argument("Invalid minutes"); }
+void Date::setMinutes(int minutes_) {
+    if (minutes_ >= 0 && minutes_ <= 60) {
+        Date::minutes = minutes_;
+    } else { throw std::invalid_argument("Invalid minutes_"); }
 }
 
 int Date::getYear() const {

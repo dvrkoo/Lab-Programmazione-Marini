@@ -5,8 +5,6 @@
 #include "iostream"
 #include "Date.h"
 
-#include "Date.h"
-
 #ifndef LAB_MARINI_TODOITEM_H
 #define LAB_MARINI_TODOITEM_H
 
@@ -15,33 +13,31 @@ class TodoItem {
 private:
 
     int id;
-    std::string description;
+
     bool completed;
 
     Date DueDate;
 
+    std::string description;
 public:
-    TodoItem(Date date);
+    TodoItem(int id,bool completed, Date date, const std::string_view &new_description);
 
     ~TodoItem();
 
     int getId() const;
 
-    std::string getDescription();
+    std::string getDescription() const;
 
-    bool isCompleted();
-
-    bool create(std::string new_description);
+    bool isCompleted() const;
 
     void setCompleted(bool val);
 
-    std::string getDueDate();
-
-    void saveToFile(const std::string &filename) const;
-
-    void readFromFile(const std::string &filename);
+    std::string getDueDate() const;
 
     void editDate(int index, int value);
+
+    bool create(const std::string_view &new_description, int count);
+
 };
 
 

@@ -32,14 +32,11 @@ public:
 
     void setDay(int day);
 
-    void setHours(int hours);
+    void setHours(int hours_);
 
-    void setMinutes(int minutes);
+    void setMinutes(int minutes_);
 
     void checkDate(int day);
-
-
-public:
 };
 
 

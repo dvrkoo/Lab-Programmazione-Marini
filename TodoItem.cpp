@@ -4,11 +4,14 @@
 
 #include "TodoItem.h"
 #include "Date.h"
-#include "fstream"
 
-//TODO add Date and time
-//TODO save on memory
-TodoItem::TodoItem(Date date) : id(0), completed(false), DueDate(date) {
+
+TodoItem::TodoItem(int id, bool completed, Date date, const std::string_view &new_description) : id(id),
+                                                                                                 completed(completed),
+                                                                                                 DueDate(date),
+                                                                                                 description(
+                                                                                                         new_description) {
+
 }
 //TodoItem::~TodoItem() = default;
 
@@ -16,15 +19,15 @@ int TodoItem::getId() const {
     return id;
 }
 
-std::string TodoItem::getDescription() {
+std::string TodoItem::getDescription() const {
     return description;
 }
 
-bool TodoItem::isCompleted() {
+bool TodoItem::isCompleted() const {
     return completed;
 }
 
-std::string TodoItem::getDueDate() {
+std::string TodoItem::getDueDate() const {
     std::string date = std::to_string(DueDate.getYear()) + "/" + std::to_string(DueDate.getMonth()) + "/" +
                        std::to_string(DueDate.getDay()) + "/" + std::to_string(DueDate.getHours()) + ":" +
                        std::to_string(DueDate.getMinutes());
@@ -55,9 +58,8 @@ void TodoItem::editDate(int index, int value) {
     }
 }
 
-bool TodoItem::create(std::string new_description) {
-    //generiamo un random int tra 1 e 100
-    id = rand() % 100 + 1;
+bool TodoItem::create(const std::string_view &new_description, int count) {
+    id = count;
     description = new_description;
     return true;
 }

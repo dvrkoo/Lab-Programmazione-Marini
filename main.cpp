@@ -1,16 +1,14 @@
 #include <iostream>
 #include <string>
-#include <list>
 #include "TodoItem.h"
 #include "HelperFunctions.h"
 #include <fstream>
 #include "TodoList.h"
 
 int main() {
-    //TODO Code refactoring
     char input_option;
     int input_id;
-    std::string version = "v0.4.0";
+    std::string version = "v0.5.0";
     TodoList todos;
     std::string input_description;
     std::ofstream file;
@@ -57,6 +55,8 @@ int main() {
             std::cin.clear();
             std::cin.ignore();
         } else if (input_option == 's') {
+            std::cin.clear();
+            std::cin.ignore();
             HelperFunctions::writeFile(todos.getTodoItems());
             std::cout << "Saving to file ";
         } else if (input_option == 'r') {

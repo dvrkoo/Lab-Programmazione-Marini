@@ -9,20 +9,23 @@
 
 class TodoList {
 private:
+
     std::list<TodoItem> todoItems;
+
+    int count;
 public:
+
+    explicit TodoList();
+
     const std::list<TodoItem> &getTodoItems() const;
 
-    void setTodoItems(const std::list<TodoItem> &todoItems);
+    void listTodos() const;
 
-public:
-    void listTodos();
-
-    void addTodo(int year, int month, int day, int hour, int minute, std::string &input_description);
+    void addTodo(int year, int month, int day, int hour, int minute, const std::string &input_description);
 
     void completeTodo(int id);
 
-    int getTodosNumber();
+    int getTodosNumber() const;
 
     void editTodo(int id, int option, int value);
 };
