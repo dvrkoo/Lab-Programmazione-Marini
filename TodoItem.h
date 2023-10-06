@@ -12,6 +12,7 @@
 class TodoItem {
 private:
 
+
     int id;
 
     bool completed;
@@ -20,6 +21,9 @@ private:
 
     std::string description;
 public:
+
+    TodoItem();
+
     TodoItem(int id,bool completed, Date date, const std::string_view &new_description);
 
     ~TodoItem();
@@ -38,6 +42,9 @@ public:
 
     bool create(const std::string_view &new_description, int count);
 
+    void serialize(std::ofstream &ofs) const;
+
+    void deserialize(std::ifstream &ifs);
 };
 
 

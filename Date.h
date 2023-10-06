@@ -5,6 +5,7 @@
 #ifndef LAB_MARINI_DATE_H
 #define LAB_MARINI_DATE_H
 
+#include <fstream>
 
 class Date {
 private:
@@ -13,7 +14,9 @@ private:
     int day;
     int hours;
     int minutes;
+
 public:
+
     int getYear() const;
 
     int getMonth() const;
@@ -37,6 +40,10 @@ public:
     void setMinutes(int minutes_);
 
     void checkDate(int day);
+
+    void serialize(std::ofstream &ofs) const;
+
+    void deserialize(std::ifstream &ifs);
 };
 
 

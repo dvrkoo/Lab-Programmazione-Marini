@@ -4,6 +4,8 @@
 
 #include "TodoList.h"
 
+#include <utility>
+
 void TodoList::listTodos() const{
     for (auto const &todoItem: todoItems) {
         std::string completed = todoItem.isCompleted() ? "done" : "not done";
@@ -25,6 +27,10 @@ void TodoList::editTodo(int id, int option, int value) {
             todoItem.editDate(option, value);
         }
     }
+}
+
+void TodoList::setList(std::list<TodoItem> list){
+    todoItems = std::move(list);
 }
 
 void TodoList::addTodo(int year, int month, int day, int hour, int minute, const std::string &input_description) {
@@ -54,12 +60,15 @@ TodoItem TodoList::getTodo(int id){
         if (id < 0 || id >= todoItems.size()) {
             throw std::invalid_argument("Invalid id ");
         }
-        if (id == todoItem.getId()) {
+        else if (id == todoItem.getId()) {
             return todoItem;
         }
     }
 }
 
+void TodoList::clearList(){
+    todoItems.clear();
+}
 int TodoList::getTodosNumber() const {
     return int(TodoList::todoItems.size());
 }

@@ -31,6 +31,10 @@ public:
     void editTodo(int id, int option, int value);
 
     TodoItem getTodo(int id);
+
+    void setList(std::list<TodoItem> list);
+
+    void clearList();
 };
 
 

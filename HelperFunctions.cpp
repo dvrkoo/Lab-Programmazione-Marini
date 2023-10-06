@@ -3,18 +3,36 @@
 //
 
 #include "HelperFunctions.h"
+// Serialization method
 
 void HelperFunctions::writeFile(std::list<TodoItem> todoItems) {
-    std::ofstream file;
-    file.open("./Todos.txt", std::ios::app);
-    if (!file) {
-        throw std::invalid_argument("Error in opening file..");
+    std::ofstream file("Todos.txt", std::ios::binary);
+
+    if (file.is_open()) {
+        for (const TodoItem& item : todoItems) {
+            item.serialize(file);
+        }
+        file.close();
+        std::cout << "Todo items written to file successfully." << std::endl;
+    } else {
+        std::cerr << "Failed to open the file for writing." << std::endl;
     }
-    for (auto &todoItem: todoItems) {
-        file.write((char *) &todoItem, sizeof(todoItem));
-    }
-    file.close();
 }
 
-void HelperFunctions::readFile(std::list<TodoItem> TodoItems) {
+std::list<TodoItem> HelperFunctions::readFile() {
+    std::list<TodoItem> items;
+    std::ifstream file("Todos.txt", std::ios::binary);
+
+    if (file.is_open()) {
+        TodoItem item;
+        while (file.peek() != EOF) {
+            item.deserialize(file);
+            items.push_back(item);
+        }
+        file.close();
+        std::cout << "Todo items read from file successfully." << std::endl;
+    } else {
+        std::cerr << "Failed to open the file for reading." << std::endl;
+    }
+    return items;
 };

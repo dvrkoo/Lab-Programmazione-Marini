@@ -2,6 +2,7 @@
 #include "../Date.h"
 #include "../TodoItem.h"
 #include "../TodoList.h"
+#include "../HelperFunctions.h"
 
 TEST(Date, setDate) {
 
@@ -40,5 +41,20 @@ TEST(TodoList, howmanytodo){
     a.editTodo(0, 3, 12);
     ASSERT_EQ(a.getTodo(0).getDueDate(), "2022/12/12/14:30");
 
+
+}
+
+TEST(HelperFunctions, Readandwrite){
+    TodoList a;
+    ASSERT_EQ(a.getTodosNumber(), 0);
+    a.addTodo(2022, 12, 31, 14, 30, "festa");
+    ASSERT_EQ(a.getTodosNumber(), 1);
+    HelperFunctions::writeFile(a.getTodoItems());
+
+    a.clearList();
+    ASSERT_EQ(a.getTodosNumber(), 0);
+    a.setList(HelperFunctions::readFile());
+    ASSERT_EQ(a.getTodosNumber(), 1);
+    ASSERT_EQ(a.getTodo(0).getDueDate(), "2022/12/31/14:30");
 
 }

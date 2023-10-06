@@ -60,7 +60,7 @@ int main() {
             HelperFunctions::writeFile(todos.getTodoItems());
             std::cout << "Saving to file ";
         } else if (input_option == 'r') {
-            HelperFunctions::readFile(todos.getTodoItems());
+            todos.setList(HelperFunctions::readFile());
             std::cin.clear();
             std::cin.ignore();
             std::cout << "Reading from file ";

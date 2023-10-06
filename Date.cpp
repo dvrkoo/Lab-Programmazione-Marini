@@ -7,6 +7,23 @@
 #include <algorithm>
 
 
+
+void Date::serialize(std::ofstream& ofs) const {
+    ofs.write(reinterpret_cast<const char*>(&year), sizeof(year));
+    ofs.write(reinterpret_cast<const char*>(&month), sizeof(month));
+    ofs.write(reinterpret_cast<const char*>(&day), sizeof(day));
+    ofs.write(reinterpret_cast<const char*>(&hours), sizeof(hours));
+    ofs.write(reinterpret_cast<const char*>(&minutes), sizeof(minutes));
+}
+
+// Deserialization method
+void Date::deserialize(std::ifstream& ifs) {
+    ifs.read(reinterpret_cast<char*>(&year), sizeof(year));
+    ifs.read(reinterpret_cast<char*>(&month), sizeof(month));
+    ifs.read(reinterpret_cast<char*>(&day), sizeof(day));
+    ifs.read(reinterpret_cast<char*>(&hours), sizeof(hours));
+    ifs.read(reinterpret_cast<char*>(&minutes), sizeof(minutes));
+}
 void Date::setYear(int year_, bool check = false) {
     if (year_ > 0) {
         Date::year = year_;
