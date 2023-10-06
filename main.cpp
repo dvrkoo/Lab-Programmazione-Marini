@@ -44,7 +44,15 @@ int main() {
 
             std::cout << "Enter a custom Date and time (YYYY MM DD HH MM): ";
             int year, month, day, hour, minute;
-            std::cin >> year >> month >> day >> hour >> minute;
+
+            if (!(std::cin >> year >> month >> day >> hour >> minute)) {
+                std::cerr << "Invalid input for Date and time." << std::endl;
+                std::cin.clear();
+                while (std::cin.get() != '\n'); // Clear the input buffer
+                continue; // Skip the current iteration of the loop
+            }
+
+            while (std::cin.get() != '\n'); // Clear the input buffer
             std::cin.clear();
             std::cin.ignore();
             todos.addTodo(year, month, day, hour, minute, input_description);
@@ -72,7 +80,12 @@ int main() {
             std::cout << "4 edit hour" << std::endl;
             std::cout << "5 edit minutes" << std::endl;
             int id, option, value;
-            std::cin >> id >> option >> value;
+            if (!(std::cin >> id >> option >> value)) {
+                std::cerr << "Invalid input for Date and time." << std::endl;
+                std::cin.clear();
+                while (std::cin.get() != '\n'); // Clear the input buffer
+                continue; // Skip the current iteration of the loop
+            }
             todos.editTodo(id, option, value);
             std::cin.clear();
             std::cin.ignore();
