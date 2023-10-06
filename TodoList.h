@@ -13,6 +13,7 @@ private:
     std::list<TodoItem> todoItems;
 
     int count;
+
 public:
 
     explicit TodoList();
@@ -28,6 +29,8 @@ public:
     int getTodosNumber() const;
 
     void editTodo(int id, int option, int value);
+
+    TodoItem getTodo(int id);
 };
 
 

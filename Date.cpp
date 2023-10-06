@@ -16,10 +16,23 @@ void Date::setYear(int year_, bool check = false) {
 }
 
 void Date::setMonth(int month_, bool check = false) {
+    bool exceptionThrown;
     if (month_ <= 12 && month_ > 0) {
+        int tmp = Date::month;
         Date::month = month_;
-        if (check)checkDate(Date::day);
-    } else { throw std::invalid_argument("Invalid Month"); }
+        if (check) {
+            try {
+                checkDate(Date::day);
+            }
+            catch (std::invalid_argument &) {
+                exceptionThrown = true;
+            }
+            if (exceptionThrown){
+                Date::month = tmp;
+                throw std::invalid_argument("Invalid month");
+            }
+        }
+    }
 }
 
 void Date::checkDate(int day_) {

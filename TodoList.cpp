@@ -49,6 +49,17 @@ const std::list<TodoItem> &TodoList::getTodoItems() const {
     return todoItems;
 }
 
+TodoItem TodoList::getTodo(int id){
+    for (auto &todoItem: todoItems) {
+        if (id < 0 || id >= todoItems.size()) {
+            throw std::invalid_argument("Invalid id ");
+        }
+        if (id == todoItem.getId()) {
+            return todoItem;
+        }
+    }
+}
+
 int TodoList::getTodosNumber() const {
     return int(TodoList::todoItems.size());
 }

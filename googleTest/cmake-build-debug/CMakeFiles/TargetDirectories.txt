@@ -1,0 +1,7 @@
+C:/Users/pippo/CLionProjects/LaboratorioProgrammazione/googleTest/cmake-build-debug/CMakeFiles/GoogleTests.dir
+C:/Users/pippo/CLionProjects/LaboratorioProgrammazione/googleTest/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/pippo/CLionProjects/LaboratorioProgrammazione/googleTest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/pippo/CLionProjects/LaboratorioProgrammazione/googleTest/cmake-build-debug/lib/googletest/CMakeFiles/gtest.dir
+C:/Users/pippo/CLionProjects/LaboratorioProgrammazione/googleTest/cmake-build-debug/lib/googletest/CMakeFiles/gtest_main.dir
+C:/Users/pippo/CLionProjects/LaboratorioProgrammazione/googleTest/cmake-build-debug/lib/googletest/CMakeFiles/edit_cache.dir
+C:/Users/pippo/CLionProjects/LaboratorioProgrammazione/googleTest/cmake-build-debug/lib/googletest/CMakeFiles/rebuild_cache.dir
