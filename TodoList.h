@@ -6,17 +6,19 @@
 
 #include "TodoItem.h"
 #include "list"
+#include <string>
 
 class TodoList {
 private:
-
     std::list<TodoItem> todoItems;
 
-    int count;
-
+    int completedTodos;
 public:
+    int getCompleted() const;
 
-    explicit TodoList();
+    void deleteTodo(std::string desc);
+
+    TodoList();
 
     const std::list<TodoItem> &getTodoItems() const;
 
@@ -24,17 +26,23 @@ public:
 
     void addTodo(int year, int month, int day, int hour, int minute, const std::string &input_description);
 
-    void completeTodo(int id);
+    void completeTodo(std::string desc);
 
     int getTodosNumber() const;
 
-    void editTodo(int id, int option, int value);
+    void editTodo(std::string desc, int option, int value);
 
-    TodoItem getTodo(int id);
+    TodoItem getTodo(std::string desc);
 
     void setList(std::list<TodoItem> list);
 
     void clearList();
+
+    static void writeFile(std::list<TodoItem> TodoItems);
+
+    static std::list<TodoItem> readFile();
+
+    friend std::ostream &operator<<(std::ostream &os, const TodoItem &obj);
 };
 
 

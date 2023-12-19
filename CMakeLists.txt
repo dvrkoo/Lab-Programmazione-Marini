@@ -10,8 +10,6 @@ add_subdirectory(googleTest)
 set(SOURCE_FILES main.cpp main.cpp TodoItem.cpp TodoItem.h
         Date.cpp
         Date.h
-        HelperFunctions.cpp
-        HelperFunctions.h
         TodoList.cpp
         TodoList.h
         googleTest/Tests.cpp
@@ -19,11 +17,9 @@ set(SOURCE_FILES main.cpp main.cpp TodoItem.cpp TodoItem.h
 add_executable(LaboratorioProgrammazione main.cpp TodoItem.cpp TodoItem.h
         Date.cpp
         Date.h
-        HelperFunctions.cpp
-        HelperFunctions.h
         TodoList.cpp
         TodoList.h
 )
 add_library(core ${SOURCE_FILES}
         )
-target_link_libraries(core)
+target_link_libraries(core gtest)

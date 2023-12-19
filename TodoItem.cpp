@@ -5,54 +5,47 @@
 #include "TodoItem.h"
 #include "Date.h"
 
-TodoItem::TodoItem() : id(0), completed(false), DueDate(2020,12,12,12,12), description("") {}
-TodoItem::TodoItem(int id, bool completed, Date date, const std::string_view &new_description) : id(id),
-                                                                                                 completed(completed),
-                                                                                                 DueDate(date),
-                                                                                                 description(
-                                                                                                         new_description) {
+TodoItem::TodoItem()
+        : completed(false), DueDate(2020, 12, 12, 12, 12), description("") {}
 
-}
-//TodoItem::~TodoItem() = default;
+TodoItem::TodoItem(bool completed, Date date,
+                   const std::string_view &new_description)
+        : completed(completed), DueDate(date), description(new_description) {}
+// TodoItem::~TodoItem() = default;
 
-int TodoItem::getId() const {
-    return id;
-}
+std::string TodoItem::getDescription() const { return description; }
 
-std::string TodoItem::getDescription() const {
-    return description;
-}
-
-bool TodoItem::isCompleted() const {
-    return completed;
-}
+bool TodoItem::isCompleted() const { return completed; }
 
 std::string TodoItem::getDueDate() const {
-    std::string date = std::to_string(DueDate.getYear()) + "/" + std::to_string(DueDate.getMonth()) + "/" +
-                       std::to_string(DueDate.getDay()) + "/" + std::to_string(DueDate.getHours()) + ":" +
+    std::string date = std::to_string(DueDate.getYear()) + "/" +
+                       std::to_string(DueDate.getMonth()) + "/" +
+                       std::to_string(DueDate.getDay()) + "/" +
+                       std::to_string(DueDate.getHours()) + ":" +
                        std::to_string(DueDate.getMinutes());
     return date;
 }
-void TodoItem::serialize(std::ofstream& ofs) const {
-    ofs.write(reinterpret_cast<const char*>(&id), sizeof(id));
-    ofs.write(reinterpret_cast<const char*>(&completed), sizeof(completed));
+
+void TodoItem::serialize(std::ofstream &ofs) const {
+    ofs.write(reinterpret_cast<const char *>(&completed), sizeof(completed));
     DueDate.serialize(ofs);
     size_t descriptionSize = description.size();
-    ofs.write(reinterpret_cast<const char*>(&descriptionSize), sizeof(descriptionSize));
+    ofs.write(reinterpret_cast<const char *>(&descriptionSize),
+              sizeof(descriptionSize));
     ofs.write(description.c_str(), descriptionSize);
 }
 
-void TodoItem::deserialize(std::ifstream& ifs) {
-    ifs.read(reinterpret_cast<char*>(&id), sizeof(id));
-    ifs.read(reinterpret_cast<char*>(&completed), sizeof(completed));
+void TodoItem::deserialize(std::ifstream &ifs) {
+    ifs.read(reinterpret_cast<char *>(&completed), sizeof(completed));
     DueDate.deserialize(ifs);
     size_t descriptionSize;
-    ifs.read(reinterpret_cast<char*>(&descriptionSize), sizeof(descriptionSize));
+    ifs.read(reinterpret_cast<char *>(&descriptionSize), sizeof(descriptionSize));
     char buffer[1024]; // Assuming a maximum description length of 1023 characters
     ifs.read(buffer, descriptionSize);
     buffer[descriptionSize] = '\0';
     description = buffer;
 }
+
 void TodoItem::setCompleted(bool val) { completed = val; }
 
 void TodoItem::editDate(int index, int value) {
@@ -77,8 +70,7 @@ void TodoItem::editDate(int index, int value) {
     }
 }
 
-bool TodoItem::create(const std::string_view &new_description, int count) {
-    id = count;
+bool TodoItem::create(const std::string_view &new_description) {
     description = new_description;
     return true;
 }
