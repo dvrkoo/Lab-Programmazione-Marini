@@ -16,7 +16,6 @@ private:
     int minutes;
 
 public:
-
     int getYear() const;
 
     int getMonth() const;
