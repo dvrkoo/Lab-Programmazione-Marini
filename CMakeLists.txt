@@ -12,7 +12,6 @@ set(SOURCE_FILES main.cpp main.cpp TodoItem.cpp TodoItem.h
         Date.h
         TodoList.cpp
         TodoList.h
-        googleTest/Tests.cpp
 )
 add_executable(LaboratorioProgrammazione main.cpp TodoItem.cpp TodoItem.h
         Date.cpp

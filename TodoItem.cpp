@@ -6,7 +6,7 @@
 #include "Date.h"
 
 TodoItem::TodoItem()
-        : completed(false), DueDate(2020, 12, 12, 12, 12), description("") {}
+        : completed(false), DueDate(1, 1, 1, 1, 1), description("") {}
 
 TodoItem::TodoItem(bool completed, Date date,
                    const std::string_view &new_description)
@@ -46,7 +46,17 @@ void TodoItem::deserialize(std::ifstream &ifs) {
     description = buffer;
 }
 
-void TodoItem::setCompleted(bool val) { completed = val; }
+void TodoItem::setCompleted() {
+    if (completed) {
+        completed = false;
+    } else {
+        completed = true;
+    }
+}
+
+void TodoItem::editDescription(const std::string &new_description) {
+    description = new_description;
+}
 
 void TodoItem::editDate(int index, int value) {
     switch (index) {

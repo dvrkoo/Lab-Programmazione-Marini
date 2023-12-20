@@ -33,7 +33,7 @@ void Date::setYear(int year_, bool check = false) {
 }
 
 void Date::setMonth(int month_, bool check = false) {
-    bool exceptionThrown;
+    bool exceptionThrown = false;
     if (month_ <= 12 && month_ > 0) {
         int tmp = Date::month;
         Date::month = month_;
@@ -50,6 +50,7 @@ void Date::setMonth(int month_, bool check = false) {
             }
         }
     }
+    else throw std::invalid_argument("Invalid month");
 }
 
 void Date::checkDate(int day_) {

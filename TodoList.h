@@ -6,6 +6,7 @@
 
 #include "TodoItem.h"
 #include "list"
+#include "Date.h"
 #include <string>
 
 class TodoList {
@@ -14,11 +15,11 @@ private:
 
     int completedTodos;
 public:
+    void editDescription(const std::string &desc, const std::string &new_description);
+
     int getCompleted() const;
 
-    void deleteTodo(std::string desc);
-
-    TodoList();
+    void deleteTodo(const std::string &desc);
 
     const std::list<TodoItem> &getTodoItems() const;
 
@@ -26,19 +27,21 @@ public:
 
     void addTodo(int year, int month, int day, int hour, int minute, const std::string &input_description);
 
-    void completeTodo(std::string desc);
+    void completeTodo(const std::string &desc);
 
     int getTodosNumber() const;
 
-    void editTodo(std::string desc, int option, int value);
+    void editTodo(const std::string &desc, int option, int value);
 
-    TodoItem getTodo(std::string desc);
+    TodoItem getTodo(const std::string &desc) const;
 
     void setList(std::list<TodoItem> list);
 
     void clearList();
 
-    static void writeFile(std::list<TodoItem> TodoItems);
+    void writeFile() const;
+
+    void searchTodo(const std::string &desc) const;
 
     static std::list<TodoItem> readFile();
 

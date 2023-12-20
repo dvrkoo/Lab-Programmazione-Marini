@@ -16,15 +16,50 @@ void TodoList::listTodos() const {
     if (todoItems.empty()) {
         std::cout << "Add your first todo!" << std::endl;
     }
-
 }
 
-void TodoList::editTodo(std::string desc, int option, int value) {
+void TodoList::searchTodo(const std::string &desc) const {
+    bool found = false;
+    std::cout << desc << std::endl;
+    for (auto const &todoItem: TodoList::readFile()) {
+        if (desc == todoItem.getDescription()) {
+            found = true;
+            std::cout << " | " << todoItem.getDescription() << " | " << todoItem.isCompleted() << " | Due to: "
+                      << todoItem.getDueDate() << std::endl;
+        }
+    }
+    if (!found) {
+        throw std::invalid_argument("Invalid desc");
+    }
+}
+
+void TodoList::editDescription(const std::string &desc, const std::string &new_description) {
+    if (new_description.empty()) {
+        throw std::invalid_argument("Invalid desc");
+    }
+    bool found = false;
+    for (auto &todoItem: todoItems) {
+        if (desc == todoItem.getDescription()) {
+            todoItem.editDescription(new_description);
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        throw std::invalid_argument("Invalid desc");
+    }
+}
+
+void TodoList::editTodo(const std::string &desc, int option, int value) {
+    bool found = false;
     for (auto &todoItem: todoItems) {
         if (desc == todoItem.getDescription()) {
             todoItem.editDate(option, value);
+            found = true;
             break;
         }
+    }
+    if (!found) {
         throw std::invalid_argument("Invalid desc");
     }
 }
@@ -39,12 +74,21 @@ void TodoList::addTodo(int year, int month, int day, int hour, int minute, const
     todoItems.push_back(newItem);
 }
 
-void TodoList::completeTodo(std::string desc) {
+void TodoList::completeTodo(const std::string &desc) {
+    bool found = false;
     for (auto &todoItem: todoItems) {
-        if (desc == todoItem.getDescription() && !todoItem.isCompleted()) {
-            todoItem.setCompleted(true);
-            completedTodos += 1;
+        if (desc == todoItem.getDescription()) {
+            todoItem.setCompleted();
+            found = true;
+            if (todoItem.isCompleted()) {
+                completedTodos += 1;
+            } else {
+                completedTodos -= 1;
+            }
         }
+    }
+    if (!found) {
+        throw std::invalid_argument("Invalid desc");
     }
 }
 
@@ -52,28 +96,27 @@ const std::list<TodoItem> &TodoList::getTodoItems() const {
     return todoItems;
 }
 
-TodoItem TodoList::getTodo(std::string desc) {
-    for (auto &todoItem: todoItems) {
+TodoItem TodoList::getTodo(const std::string &desc) const {
+    for (auto const &todoItem: todoItems) {
         if (desc == todoItem.getDescription()) {
             return todoItem;
         }
     }
+    throw std::invalid_argument("Invalid desc");
 }
 
 void TodoList::clearList() {
     todoItems.clear();
+    completedTodos = 0;
 }
 
 int TodoList::getTodosNumber() const {
     return int(TodoList::todoItems.size());
 }
 
-TodoList::TodoList() {
-}
-
-void TodoList::deleteTodo(std::string desc) {
+void TodoList::deleteTodo(const std::string &desc) {
     auto it = std::find_if(todoItems.begin(), todoItems.end(),
-                           [desc](const TodoItem &todoItem) {
+                           [&desc](const TodoItem &todoItem) {
                                return desc == todoItem.getDescription();
                            });
 
@@ -86,7 +129,7 @@ void TodoList::deleteTodo(std::string desc) {
 
 // Serialization method
 
-void TodoList::writeFile(std::list<TodoItem> todoItems) {
+void TodoList::writeFile() const {
     std::ofstream file("Todos.txt", std::ios::binary);
 
     if (file.is_open()) {
@@ -102,10 +145,9 @@ void TodoList::writeFile(std::list<TodoItem> todoItems) {
 
 std::list<TodoItem> TodoList::readFile() {
     std::list<TodoItem> items;
-    std::ifstream file("Todos.txt", std::ios::binary);
-
-    if (file.is_open()) {
-        TodoItem item;
+    if (std::ifstream file("Todos.txt", std::ios::binary); file.is_open()) {
+        Date Date(2020, 1, 1, 1, 1);
+        TodoItem item(false, Date, "");
         while (file.peek() != EOF) {
             item.deserialize(file);
             items.push_back(item);
@@ -113,7 +155,7 @@ std::list<TodoItem> TodoList::readFile() {
         file.close();
         std::cout << "Todo items read from file successfully." << std::endl;
     } else {
-        std::cerr << "Failed to open the file for reading." << std::endl;
+        throw std::invalid_argument("Invalid file");
     }
     return items;
 };
@@ -125,7 +167,7 @@ std::ostream &operator<<(std::ostream &os, const TodoItem &obj) {
 
 int TodoList::getCompleted() const {
     return completedTodos;
-};
+}
 
 
 

@@ -26,6 +26,7 @@ int main() {
         std::cout << "[c]omplete a Todo " << std::endl;
         std::cout << "[d]elete a Todo " << std::endl;
         std::cout << "[e]dit a Todo " << std::endl;
+        std::cout << "[f]ind a Todo " << std::endl;
         std::cout << "[s]ave to file" << std::endl;
         std::cout << "[r]ead from file" << std::endl;
         std::cout << "[q]uit" << std::endl;
@@ -65,7 +66,7 @@ int main() {
         } else if (input_option == 's') {
             std::cin.clear();
             std::cin.ignore();
-            TodoList::writeFile(todos.getTodoItems());
+            todos.writeFile();
             std::cout << "Saving to file ";
         } else if (input_option == 'r') {
             todos.setList(TodoList::readFile());
@@ -79,17 +80,29 @@ int main() {
             std::cout << "3 edit day" << std::endl;
             std::cout << "4 edit hour" << std::endl;
             std::cout << "5 edit minutes" << std::endl;
+            std::cout << "6 edit description" << std::endl;
             std::string desc;
-            int option, value;
-            if (!(std::cin >> desc >> option >> value)) {
-                std::cerr << "Invalid input for Date and time." << std::endl;
-                std::cin.clear();
-                while (std::cin.get() != '\n'); // Clear the input buffer
-                continue; // Skip the current iteration of the loop
+            int option;
+            int value;
+            while (true) {
+                if (!(std::cin >> desc >> option >> value)) {
+                    std::cerr << "Invalid input for description, option, or value. Please try again." << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                } else {
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+                    break; // Break the loop if the input is valid
+                }
             }
-            todos.editTodo(input_desc, option, value);
-            std::cin.clear();
-            std::cin.ignore();
+            if (option == 6) {
+                std::cout << "Enter new description: ";
+                std::string new_desc;
+                std::getline(std::cin, new_desc);
+                todos.editDescription(desc, new_desc);
+            }
+            else{
+                todos.editTodo(desc, option, value);
+            }
         }
         else if (input_option == 'd'){
             std::cout << "Enter description to delete: ";
@@ -98,6 +111,19 @@ int main() {
             std::cin.clear();
             std::cin.ignore();
         }
+        else if (input_option == 'f'){
+            std::cout << "Enter description to search: ";
+            std::cin >> input_desc;
+            todos.searchTodo(input_desc);
+            std::cin.clear();
+            std::cin.ignore();
+        }
+        else {
+            std::cout << "Invalid option" << std::endl;
+            std::cin.clear();
+            std::cin.ignore();
+        }
+
     }
     return 0;
 }

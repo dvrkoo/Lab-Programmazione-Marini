@@ -28,7 +28,9 @@ public:
 
     bool isCompleted() const;
 
-    void setCompleted(bool val);
+    void editDescription(const std::string &new_description);
+
+    void setCompleted();
 
     std::string getDueDate() const;
 
